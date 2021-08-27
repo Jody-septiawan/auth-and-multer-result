@@ -24,7 +24,7 @@ exports.register = async (req, res) => {
     });
 
   try {
-    const user = await user.create({
+    const newUser = await user.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
@@ -33,8 +33,8 @@ exports.register = async (req, res) => {
     res.status(200).send({
       status: "success...",
       data: {
-        name: user.name,
-        email: user.email,
+        name: newUser.name,
+        email: newUser.email,
       },
     });
   } catch (error) {
@@ -84,7 +84,7 @@ exports.login = async (req, res) => {
       status: "success...",
       data: {
         name: userExist.name,
-        email: userExist.email
+        email: userExist.email,
       },
     });
   } catch (error) {
